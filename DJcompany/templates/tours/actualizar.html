@@ -1,0 +1,70 @@
+{% include 'inc/header.html' %}
+
+
+<div class="ui container">
+    <h1>Actualizar TOUR</h1>
+    <br>
+    <form class="ui form" method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {% for t in tour %}
+        <div class="field">
+            <div class="field">
+                <label for="">Nombre TOUR</label>
+                <div class="ui left icon input">
+                    <input type="text" name="nombret" value="{{ t.nombret }}" >
+                    <i class="user icon"></i>
+                  </div>            
+                </div>
+        </div>
+        <div class="four fields">
+            <div class="field">
+                <label for="">Fecha Inicio</label>
+                <input type="date"  name="fecha_inicio" value="{{ t.fecha_inicio|date:'Y-m-d' }}" required>
+            </div>
+            <div class="field">
+                <label for="">Fecha Fin</label>
+                <input type="date"  name="fecha_fin" value="{{ t.fecha_fin|date:'Y-m-d' }}" required>
+            </div>
+            <div class="field">
+                <label for="">Pais a Visitar</label>
+                <input type="text"  name="pais_visitar" value="{{ t.pais_visitar }}">
+            </div>
+            <div class="field">
+                <label for="">Ciudades a Visitar</label>
+                <input type="text"  name="ciudades_visitar" value="{{ t.ciudades_visitar }}">
+            </div>
+        </div>
+        <div class="three fields">
+            <div class="field">
+                <label for="">Venta Boleteria</label>
+                <input type="text"  name="ventas_boletas" value="{{ t.ventas_boletas }}">
+            </div>
+            <div class="field">
+                <label for="">Ganancias del TOUR</label>
+                <input type="text" name="gananciast" value="{{ t.gananciast }}">
+            </div>
+            <div class="field">
+                <label for="">Patrocinadores del TOUR</label>
+                <input type="text" name="patrocinadorest" value="{{ t.patrocinadorest }}">
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui selection dropdown">
+                <input type="hidden" name="artistas">
+                <i class="dropdown icon"></i>
+                <div class="default text">Selecciona un artista</div>
+                <div class="menu">
+                    {% for a in artistas %}
+                        <div class="item" data-value="{{ a.id }} {% if a.id == a.artistas_id %} selected {% endif %}">{{ a.nombre }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div>
+            <button class="ui green button">Actualizar TOUR</button>
+        </div>
+    </form>
+</div>
+
+{% include 'inc/footer.html' %}

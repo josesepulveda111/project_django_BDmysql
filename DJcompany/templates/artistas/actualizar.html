@@ -1,0 +1,64 @@
+{% include 'inc/header.html' %}
+
+{% load static %}
+<div class="ui container">
+    <h1>Actualizar Artista</h1>
+    <br>
+    <form class="ui form" method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {% for a in artistas %}
+        <div class="field">
+            <div class="field">
+                <label for="">Nombre Completo</label>
+                <input type="text" name="nombre" id="" value="{{ a.nombre }}">
+            </div>
+        </div>
+        <div class="four fields">
+            <div class="field">
+                <label for="">Edad</label>
+                <input type="text"  name="edad" value="{{ a.edad }}">
+            </div>
+            <div class="field">
+                <label for="">Nacionalidad</label>
+                <input type="text"  name="nacionalidad" value="{{ a.nacionalidad }}">
+            </div>
+            <div class="field">
+                <label for="">Celular</label>
+                <input type="number"  name="celular" value="{{ a.celular }}">
+            </div>
+            <div class="field">
+                <label for="">Correo Electronico</label>
+                <input type="email"  name="correo" value="{{ a.correo }}">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="">Premios</label>
+                <input type="text"  name="premios" value="{{ a.premios }}">
+            </div>
+            <div class="field">
+                <label for="">Fecha de contrato</label>
+                <input type="date" name="fecha_firma" value="{{ a.fecha_firma|date:'Y-m-d' }}" required>
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="">Foto del Artista</label>
+                <input type="file" name="foto" accept="image/*">
+                <h3>Su imagen anterior es:</h3>
+                <img src="{% static 'Img/' %}{{ a.foto }}" width="200" height="200" alt="...">
+                <input type="hidden" name="fotovieja" id="fotovieja" value="{{ a.foto }}">
+            </div>
+            <div class="field">
+                <label for="">Genero Musical</label>
+                <input type="text" name="genero_musical" value="{{ a.genero_musical }}">
+            </div>
+        </div>
+        {% endfor %}
+        <div>
+            <button class="ui green button">Actualizar Artista</button>
+        </div>
+    </form>
+</div>
+
+{% include 'inc/footer.html' %}

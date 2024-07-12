@@ -1,0 +1,92 @@
+{% include 'inc/header.html' %}
+
+
+<div class="ui container">
+    <h1>Registrar Album</h1>
+    <br>
+    <form class="ui form" method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <div class="field">
+            <div class="field">
+                <label for="">Nombre Album</label>
+                <div class="ui left icon input">
+                    <input type="text" name="nombrea" id="" placeholder="Ingrese el Nombre">
+                    <i class="font icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="four fields">
+            <div class="field">
+                <label for="">Duracion</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="duraciona" placeholder="Ingrese la Duracion del ALbum">
+                    <i class="clock outline icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Cantidad de Canciones</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="cantidad_canciones" placeholder="Ingrese la Cantidad">
+                    <i class="music icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Idioma</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="idioma" placeholder="Ingrese el Idioma">
+                    <i class="language icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Genero Musical</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="genero_musical" placeholder="Ingrese el Genero Musical">
+                    <i class="music icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="">Ventas del Album</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="ventas" placeholder="Ingrese Los Ventas">
+                    <i class="money bill alternate outline icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Fecha de Lanzamiento</label>
+                <input type="date" name="fecha_lanzamiento">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="">Foto del Album</label>
+                <input type="file"  name="foto" accept="image/*">
+            </div>
+            <div class="field">
+                <label for="">Colaboraciones</label>
+                <div class="ui left icon input">
+                    <input type="text" name="colaboraciones" placeholder="Ingrese Artistas Colaboradores">
+                    <i class="users icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui selection dropdown">
+                <input type="hidden" name="artistas">
+                <i class="dropdown icon"></i>
+                <div class="default text">Selecciona un artista</div>
+                <div class="menu">
+                    {% for a in artistas %}
+                    <div class="item" data-value="{{ a.id }}"  {% if a.id == a.artistas_id %} selected {% endif %}>{{ a.nombre }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="ui green button">Guardar Album</button>
+        </div>
+    </form>
+</div>
+
+{% include 'inc/footer.html' %}

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/semantic.min.js' %}"></script>
+    <title>DJcompany</title>
+</head>
+<body>
+    <div class="container">
+        <div class="ui secondary pointing menu">
+            <div class="item active">
+                DJCOMPANY
+            </div>
+            <div class="ui dropdown item">
+                Artistas
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <a href="/artistas/insertar" class="item">Registrar un Artista</a>
+                  <a href="/artistas/listado" class="item">Artistas Vigentes</a>
+                  <a href="/artistas/listadoi" class="item">Artistas Eliminados</a>
+                </div>
+            </div>
+            <div class="ui dropdown item">
+              Albums
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a href="/albums/insertar" class="item">Registrar un Album</a>
+                <a href="/albums/listado" class="item">Albums mas Destacados</a>
+                <a href="/albums/listadoi" class="item">Albums no Destacados</a>
+              </div>
+            </div>
+            <div class="ui dropdown item">
+              TOURS
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a href="/tours/insertar" class="item">Registrar TOUR</a>
+                <a href="/tours/listado" class="item">TOUR Completado</a>
+                <a href="/tours/listadocur" class="item">TOUR En Curso</a>
+                <a href="/tours/listadocan" class="item">TOUR Cancelado</a>
+              </div>
+          </div>
+    </div>
+    

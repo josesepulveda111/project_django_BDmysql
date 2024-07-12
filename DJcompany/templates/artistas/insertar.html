@@ -1,0 +1,80 @@
+{% include 'inc/header.html' %}
+
+
+<div class="ui container">
+    <h1>Registrar un Artista</h1>
+    <br>
+    <form class="ui form" method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <div class="field">
+            <div class="field">
+                <label for="">Nombre Completo</label>
+                <div class="ui left icon input">
+                    <input type="text" name="nombre" id="" placeholder="Ingrese el Nombre">
+                    <i class="user icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="four fields">
+            <div class="field">
+                <label for="">Edad</label>
+                    <div class="ui left icon input">
+                    <input type="text"  name="edad" placeholder="Ingrese la Edad">
+                    <i class="birthday cake icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Nacionalidad</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="nacionalidad" placeholder="Ingrese la Nacionalidad">
+                    <i class="globe icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Celular</label>
+                <div class="ui left icon input">
+                    <input type="number"  name="celular" placeholder="Ingrese el Numero de Celular">
+                    <i class="phone icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Correo Electronico</label>
+                <div class="ui left icon input">
+                    <input type="email"  name="correo" placeholder="@">
+                    <i class="envelope icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="">Premios</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="premios" placeholder="Ingrese Los Premios del Artista">
+                    <i class="trophy icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Fecha de contrato</label>
+                <input type="date" name="fecha_firma">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="">Foto del Artista</label>
+                <input type="file"  name="foto" accept="image/*">
+            </div>
+            <div class="field">
+                <label for="">Genero Musical</label>
+                <div class="ui left icon input">
+                    <input type="text" name="genero_musical" placeholder="Ingrese el Genero Musical">
+                    <i class="music icon"></i>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="ui green button">Guardar Registro</button>
+        </div>
+    </form>
+</div>
+
+{% include 'inc/footer.html' %}

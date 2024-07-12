@@ -1,0 +1,48 @@
+{% include 'inc/header.html' %}
+{% load static %}
+
+<center><h1>Albums No Destacados</h1></center>
+<br>
+
+<div class="ui container">
+  <div class="ui special cards">
+    {% for a in albums %}
+    <div class="card">
+      <div class="blurring dimmable image">
+        <div class="ui dimmer">
+          <div class="content">
+            <div class="center">
+                <a href="/albums/destacar/{{ a.0 }}" class="ui inverted button">Destacar</a>
+                <a href="/albums/actualizar/{{ a.0 }}" class="right floated">
+                    <button class="ui inverted blue button">Actualizar</button>
+                </a>
+            </div>
+          </div>
+        </div>
+        <img src="{% static 'Img/' %}{{ a.8 }}">
+      </div>
+      <div class="content">
+        <span class="header">{{ a.1 }}</span>
+        <div class="meta">
+            <span class="date">Duracion: {{ a.2 }}</span>
+            <br>
+            <span class="date">Cantidad de Canciones: {{ a.3 }}</span>
+            <br>
+            <span class="date">Idioma: {{ a.4 }}</span>
+            <br>
+            <span class="date">Gnero Musical: {{ a.5 }}</span>
+            <br>
+            <span class="date">Ventas del Album: {{ a.6 }}</span>
+            <br>
+            <span class="date">Colaboraciones: {{ a.9 }}</span>
+        </div>
+      </div>
+      <div class="extra content">
+        <span><i class="red check icon"></i>No Destacado</span>
+    </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% include 'inc/footer.html' %}

@@ -1,0 +1,83 @@
+{% include 'inc/header.html' %}
+
+
+<div class="ui container">
+    <h1>Registrar TOUR</h1>
+    <br>
+    <form class="ui form" method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <div class="field">
+            <div class="field">
+                <label for="">Nombre TOUR</label>
+                <div class="ui left icon input">
+                    <input type="text" name="nombret" placeholder="Ingrese el Nombre del TOUR" required>
+                    <i class="font icon"></i>
+                  </div>            
+                </div>
+        </div>
+        <div class="four fields">
+            <div class="field">
+                <label for="">Fecha Inicio</label>
+                <input type="date"  name="fecha_inicio">
+            </div>
+            <div class="field">
+                <label for="">Fecha Fin</label>
+                <input type="date"  name="fecha_fin">
+            </div>
+            <div class="field">
+                <label for="">Pais a Visitar</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="pais_visitar" placeholder="Ingrese el Pais a Visitar">
+                    <i class="globe icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Ciudades a Visitar</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="ciudades_visitar" placeholder="Ingrese las Ciudades a Visitar">
+                    <i class="globe icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="three fields">
+            <div class="field">
+                <label for="">Venta Boleteria</label>
+                <div class="ui left icon input">
+                    <input type="text"  name="ventas_boletas" placeholder="Ingrese el Precio de una Boleta">
+                    <i class="money bill alternate outline icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Ganancias del TOUR</label>
+                <div class="ui left icon input">
+                    <input type="text" name="gananciast" placeholder="Ingrese las Ganancias Esperadas">
+                    <i class="dollar sign icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Patrocinadores del TOUR</label>
+                <div class="ui left icon input">
+                    <input type="text" name="patrocinadorest" placeholder="Ingrese el Genero Musical">
+                    <i class="tags icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui selection dropdown">
+                <input type="hidden" name="artistas">
+                <i class="dropdown icon"></i>
+                <div class="default text">Selecciona un artista</div>
+                <div class="menu">
+                    {% for a in artistas %}
+                        <div class="item" data-value="{{ a.id }}">{{ a.nombre }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="ui green button">Guardar Registro</button>
+        </div>
+    </form>
+</div>
+
+{% include 'inc/footer.html' %}

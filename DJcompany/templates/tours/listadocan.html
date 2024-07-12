@@ -1,0 +1,50 @@
+{% include 'inc/header.html' %}
+{% load static %}
+
+<div class="ui container">
+    <center>
+        <h1>TOURS Cancelados</h1>
+    </center>
+    <br>
+    <table class="ui red table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Pais</th>
+                <th>Ciudades</th>
+                <th>Valor Boleteria</th>
+                <th>Ganancias Esperadas</th>
+                <th>Patrocinadores</th>
+                <th>Estado TOUR</th>
+                <th>Artista del TOUR</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tours %}
+            <tr>
+            <td>{{ t.1 }}</td>
+            <td>{{ t.2 }}</td>
+            <td>{{ t.3 }}</td>
+            <td>{{ t.4 }}</td>
+            <td>{{ t.5 }}</td>
+            <td>{{ t.6 }}</td>
+            <td>{{ t.7 }}</td>
+            <td>{{ t.8 }}</td>
+            <td>{{ t.9 }}</td>
+            <td>{{ t.10 }}</td>
+            <td>
+                <a href="/tours/actualizar/{{ t.0 }}"><i class="edit icon"></i></a>
+                <a href="/tours/completar/{{ t.0 }}"><i class="green check icon"></i></a>
+                <a href="/tours/encurso/{{ t.0 }}"><i class="blue pause icon"></i></a>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</div>
+
+{% include 'inc/footer.html' %}

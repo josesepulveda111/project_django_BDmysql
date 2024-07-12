@@ -1,0 +1,76 @@
+{% include 'inc/header.html' %}
+
+{% load static %}
+<div class="ui container">
+    <h1>Actualizar Album</h1>
+    <br>
+    <form class="ui form" method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {% for a in albums %}
+        <div class="field">
+            <div class="field">
+                <label for="">Nombre Album</label>
+                <input type="text" name="nombrea" id="" value="{{ a.nombrea }}">
+            </div>
+        </div>
+        <div class="four fields">
+            <div class="field">
+                <label for="">Duracion</label>
+                <input type="text"  name="duraciona" value="{{ a.duraciona }}">
+            </div>
+            <div class="field">
+                <label for="">Cantidad de Canciones</label>
+                <input type="text"  name="cantidad_canciones" value="{{ a.cantidad_canciones }}">
+            </div>
+            <div class="field">
+                <label for="">Idioma</label>
+                <input type="text"  name="idioma" value="{{ a.idioma }}">
+            </div>
+            <div class="field">
+                <label for="">Genero Musical</label>
+                <input type="text"  name="genero_musical" value="{{ a.genero_musical }}">
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="">Ventas del Album</label>
+                <input type="text"  name="ventas" value="{{ a.ventas }}">
+            </div>
+            <div class="field">
+                <label for="">Fecha de Lanzamiento</label>
+                <input type="date" name="fecha_lanzamiento" value="{{ a.fecha_lanzamiento|date:'Y-m-d' }}" required>
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="">Foto del Album</label>
+                <input type="file"  name="foto" accept="image/*">
+                <h3>Su imagen anterior es:</h3>
+                <img src="{% static 'Img/' %}{{ a.foto }}" width="200" height="200" alt="...">
+                <input type="hidden" name="fotovieja" id="fotovieja" value="{{ a.foto }}">
+            </div>
+            <div class="field">
+                <label for="">Colaboraciones</label>
+                <input type="text" name="colaboraciones" value="{{ a.colaboraciones }}">
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui selection dropdown">
+                <input type="hidden" name="artistas">
+                <i class="dropdown icon"></i>
+                <div class="default text">Selecciona un artista</div>
+                <div class="menu">
+                    {% for ar in artistas %}
+                        <div class="item" data-value="{{ ar.id }}"  {% if ar.id == ar.artistas_id %} selected {% endif %}>{{ ar.nombre }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div>
+            <button class="ui green button">Actualizar Album</button>
+        </div>
+    </form>
+</div>
+
+{% include 'inc/footer.html' %}
